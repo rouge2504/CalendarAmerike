@@ -84,10 +84,6 @@ public class DayChecker : MonoBehaviour
     public void FillFormDayData()
     {
         int hour = DataManager.instance.dataTemp.hour;
-        for (int j = 0; j < DataManager.instance.dataList.Count; j++)
-        {
-            Data data = DataManager.instance.dataList[j];
-            DateTime dateTimeTemp = data.GetTime();
             DateTime date = new DateTime(1900,
                          1,
                          1,
@@ -95,6 +91,10 @@ public class DayChecker : MonoBehaviour
                              hour + 12 : hour,
                          0,
                          00);
+        for (int j = 0; j < DataManager.instance.dataList.Count; j++)
+        {
+            Data data = DataManager.instance.dataList[j];
+            DateTime dateTimeTemp = data.GetTime();
             if (DataManager.instance.dataTemp.dateTime.Day == data.GetDate().Day &&
                     DataManager.instance.dataTemp.dateTime.Month == data.GetDate().Month &&
                         DataManager.instance.dataTemp.dateTime.Year == data.GetDate().Year &&
@@ -102,6 +102,7 @@ public class DayChecker : MonoBehaviour
             {
                 DataManager.instance.formDayData.SetForm(data.medicName);
                 DataManager.instance.formDayData.SetClient(data);
+                DataManager.instance.formDayData.SetHours(date);
                 print("Find");
                 return;
             }
@@ -109,6 +110,7 @@ public class DayChecker : MonoBehaviour
         }
 
         DataManager.instance.formDayData.SetForm("");
+        DataManager.instance.formDayData.SetHours(date);
 
         print("Empty");
     }

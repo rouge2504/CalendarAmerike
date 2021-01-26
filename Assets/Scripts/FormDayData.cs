@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +18,6 @@ public class FormDayData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -40,6 +41,26 @@ public class FormDayData : MonoBehaviour
         }
         contentClient.SetActive((DataManager.instance.tempProfile == DataManager.Profile.CLIENT) ? false : true);
         dropdownMedic.interactable = (DataManager.instance.tempProfile == DataManager.Profile.CLIENT) ? false : true;
+    }
+
+    public void SetHours(DateTime time)
+    {
+        print(time);
+        string validateMeridian = time.ToString("tt");
+        string validateHour = time.ToString("hh");
+        print(validateHour + " " + validateMeridian);
+        dropdownHour.ClearOptions();
+        var hours = Enumerable.Range(00, 24).Select(i => (DateTime.MinValue.AddHours(i)).ToString("hh:mm tt")).ToList();
+        dropdownHour.AddOptions(hours);
+
+        for (int i = 0; i <  hours.Count; i++)
+        {
+            if (hours[i].Contains(validateMeridian) && hours[i].Contains(validateHour))
+            {
+                dropdownHour.value = i;
+                toHour.text = hours[i + 1];
+            }
+        }
     }
 
     public void SetClient(Data data)

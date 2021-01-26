@@ -96,10 +96,26 @@ public class DataManager : MonoBehaviour
 
     class ItemEqualityComparer : IEqualityComparer<Data>
     {
+
         public bool Equals(Data x, Data y)
         {
             // Two items are equal if their keys are equal.
             return x.medicName == y.medicName;
+        }
+
+        public int GetHashCode(Data obj)
+        {
+            return obj.medicName.GetHashCode();
+        }
+    }
+
+    class HourEqualityComparer : IEqualityComparer<Data>
+    {
+
+        public bool Equals(Data x, Data y)
+        {
+            // Two items are equal if their keys are equal.
+            return x.hour == y.hour;
         }
 
         public int GetHashCode(Data obj)
