@@ -70,26 +70,48 @@ public class DayChecker : MonoBehaviour
         }
     }
 
-    public void SetContentTextToHours(Hour hour)
-    {
-
-        for (int j = 0; j < DataManager.instance.dataList.Count; j++)
-        {
-            Data data = DataManager.instance.dataList[j];
-            hour.SetContentText(data.medicName);
-        }
-    }
 
     public void OpenDataDayForm(DateTime hour)
     {
         dataDayForm.SetActive(true);
         DataManager.instance.dataTemp.hour = hour.Hour;
-        DataManager.instance.dataTemp.meridian = hour.ToString("tt", CultureInfo.InvariantCulture); 
+        DataManager.instance.dataTemp.meridian = hour.ToString("tt", CultureInfo.InvariantCulture);
+        FillFormDayData();
         //DataManager.instance.FillDataOnForm();
-        print(hour);
+
     }
 
-    
+    public void FillFormDayData()
+    {
+        int hour = DataManager.instance.dataTemp.hour;
+        for (int j = 0; j < DataManager.instance.dataList.Count; j++)
+        {
+            Data data = DataManager.instance.dataList[j];
+            DateTime dateTimeTemp = data.GetTime();
+            DateTime date = new DateTime(1900,
+                         1,
+                         1,
+                         (DataManager.instance.dataTemp.meridian.ToUpperInvariant() == "PM" && hour < 12) ?
+                             hour + 12 : hour,
+                         0,
+                         00);
+            if (DataManager.instance.dataTemp.dateTime.Day == data.GetDate().Day &&
+                    DataManager.instance.dataTemp.dateTime.Month == data.GetDate().Month &&
+                        DataManager.instance.dataTemp.dateTime.Year == data.GetDate().Year &&
+                            date == dateTimeTemp)
+            {
+                DataManager.instance.formDayData.SetForm(data.medicName);
+                DataManager.instance.formDayData.SetClient(data);
+                print("Find");
+                return;
+            }
+
+        }
+
+        DataManager.instance.formDayData.SetForm("");
+
+        print("Empty");
+    }
 
     private void UpdateList()
     {
@@ -114,7 +136,8 @@ public class DayChecker : MonoBehaviour
                 DateTime dateTimeTemp = data.GetTime();
                 if (DataManager.instance.dataTemp.dateTime.Day == data.GetDate().Day &&
                         DataManager.instance.dataTemp.dateTime.Month == data.GetDate().Month &&
-                            DataManager.instance.dataTemp.dateTime.Year == data.GetDate().Year)
+                            DataManager.instance.dataTemp.dateTime.Year == data.GetDate().Year &&
+                                dateTimeTemp.Hour == hoursList[i].dateHour.Hour)
                 {
                     validateMeridian = dateTimeTemp.ToString("tt");
                     validateHour = dateTimeTemp.ToString("%h");
@@ -123,7 +146,7 @@ public class DayChecker : MonoBehaviour
                     {
                         SnapTo(hoursList[i].GetComponent<RectTransform>());
                         SetColor(hoursList[i].GetComponent<Image>(), ocupadedHourColor);
-                        SetContentTextToHours(hoursList[i]);
+                        hoursList[i].SetContentText(data.medicName);
 
                     }
                 }

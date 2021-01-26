@@ -230,6 +230,7 @@ MonoBehaviour:
     type: 3}
   dataDayForm: {fileID: 1470909897}
   stayHourColor: {r: 0, g: 1, b: 0.38452935, a: 1}
+  ocupadedHourColor: {r: 0, g: 0.28465223, b: 1, a: 1}
   repeatTimeOnMinutesToUpdate: 5
 --- !u!4 &12535723
 Transform:
@@ -2158,11 +2159,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Ernesto Zedillo
+    - m_Text: -----
       m_Image: {fileID: 0}
     - m_Text: "Enrique Pe\xF1a"
       m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: Ernesto Zedillo
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7001,6 +7002,7 @@ MonoBehaviour:
   contentClient: {fileID: 2137611109}
   inputFieldClient: {fileID: 2144801524}
   dropdownMedic: {fileID: 530223610}
+  labelMedic: {fileID: 1705435895}
   dropdownHour: {fileID: 1224771945}
   toHour: {fileID: 2033258009}
   disponibility: {fileID: 1622829295}
@@ -8126,6 +8128,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 12535722}
+        m_MethodName: CleanHours
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1641829471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8232,7 +8245,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ernesto Zedillo
+  m_Text: 
 --- !u!222 &1705435896
 CanvasRenderer:
   m_ObjectHideFlags: 0

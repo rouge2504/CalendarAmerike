@@ -9,6 +9,7 @@ public class FormDayData : MonoBehaviour
 
     public InputField inputFieldClient;
     public Dropdown dropdownMedic;
+    public Text labelMedic;
     public Dropdown dropdownHour;
     public Text toHour;
     public Toggle disponibility;
@@ -22,5 +23,27 @@ public class FormDayData : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetForm(string medicName)
+    {
+
+        print(medicName);
+
+        //labelMedic.text = medicName;
+        for (int i = 0; i < DataManager.instance.medicName.Count; i++)
+        {
+            if (medicName == DataManager.instance.medicName[i])
+            {
+                dropdownMedic.value = i;
+            }
+        }
+        contentClient.SetActive((DataManager.instance.tempProfile == DataManager.Profile.CLIENT) ? false : true);
+        dropdownMedic.interactable = (DataManager.instance.tempProfile == DataManager.Profile.CLIENT) ? false : true;
+    }
+
+    public void SetClient(Data data)
+    {
+        inputFieldClient.text = data.clientName;
     }
 }

@@ -22,6 +22,9 @@ public class DataManager : MonoBehaviour
     [HideInInspector] public Data dataTemp;
 
     [HideInInspector] public List<Data> dataList = new List<Data>();
+
+    [HideInInspector] public List<Data> medicList = new List<Data>();
+    [HideInInspector] public List<string> medicName;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,10 +42,28 @@ public class DataManager : MonoBehaviour
             string json = File.ReadAllText(path);
             Data[] data = JsonHelper.FromJson<Data>(json);
             dataList = data.OfType<Data>().ToList();
+            FillListMedic(dataList);
         }else
         {
             File.WriteAllText(path, "");
         }
+    }
+
+    void FillListMedic(List<Data> dataList)
+    {
+        medicList = dataList.Distinct(new ItemEqualityComparer()).ToList();
+
+        medicName = new List<string>();
+        medicName.Add("");
+        foreach (var item in medicList)
+        {
+            print($"DISTINCT ITEM = {item.medicName} ");
+            medicName.Add(item.medicName);
+        }
+
+        formDayData.dropdownMedic.ClearOptions();
+        formDayData.dropdownMedic.AddOptions(medicName);
+
     }
 
     // Update is called once per frame
@@ -73,7 +94,19 @@ public class DataManager : MonoBehaviour
     }
 
 
+    class ItemEqualityComparer : IEqualityComparer<Data>
+    {
+        public bool Equals(Data x, Data y)
+        {
+            // Two items are equal if their keys are equal.
+            return x.medicName == y.medicName;
+        }
 
+        public int GetHashCode(Data obj)
+        {
+            return obj.medicName.GetHashCode();
+        }
+    }
 }
 [Serializable]
 public class Data
