@@ -190,7 +190,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -291,6 +291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayNumber: {fileID: 4611668807456612442}
   contentText: {fileID: 3194160592983299407}
+  openDayDataDay: {fileID: 3412567758746148157}
+  nameHour: 
 --- !u!1 &7010586462814369253
 GameObject:
   m_ObjectHideFlags: 0

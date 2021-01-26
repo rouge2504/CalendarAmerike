@@ -70,6 +70,9 @@ public class Calendar : MonoBehaviour
         public void SetDateMonth(DateTime date)
         {
             print(date);
+            DataManager.instance.dataTemp.dateTime = date;
+            Calendar.instance.ContentDay.SetActive(true);
+            DayChecker.instance.Init();
         }
     }
 
@@ -83,6 +86,10 @@ public class Calendar : MonoBehaviour
     /// Try to figure out why it must be six weeks even though at most there are only 31 days in a month
     /// </summary>
     public Transform[] weeks;
+
+    public GameObject ContentDay;
+
+    public static Calendar instance;
 
     /// <summary>
     /// This is the text object that displays the current month and year
@@ -102,6 +109,7 @@ public class Calendar : MonoBehaviour
     private void Start()
     {
         UpdateCalendar(DateTime.Now.Year, DateTime.Now.Month);
+        instance = this;
     }
 
     /// <summary>

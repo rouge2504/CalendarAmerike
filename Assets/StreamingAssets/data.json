@@ -1,0 +1,24 @@
+{
+    "Items": [
+        {
+            "day": 26,
+            "month": 1,
+            "year": 2021,
+            "hour": 8,
+            "meridian": "AM",
+            "clientName": "",
+            "medicName": "Ernesto Zedillo",
+            "profile": 0
+        },
+        {
+            "day": 26,
+            "month": 1,
+            "year": 2021,
+            "hour": 10,
+            "meridian": "AM",
+            "clientName": "",
+            "medicName": "Enrique Peña",
+            "profile": 0
+        }
+    ]
+}
