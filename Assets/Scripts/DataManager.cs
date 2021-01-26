@@ -80,11 +80,13 @@ public class DataManager : MonoBehaviour
 
     public void FillDataOnForm()
     {
-        
+        print("Guardando");
         dataTemp.profile = tempProfile;
         dataTemp.SetDate();
-        dataList.Add(dataTemp);
+
+        dataList.Add(new Data(dataTemp));
         string json = JsonHelper.ToJson(dataList.ToArray(), true);
+
         File.WriteAllText(path, json);
     }
    
@@ -136,6 +138,35 @@ public class Data
     public string clientName;
     public string medicName;
     public DataManager.Profile profile;
+
+    public Data()
+    {
+
+    }
+
+    public Data (int day, int month, int year, int hour, string meridian, string clientName, string medicName, DataManager.Profile profile)
+    {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.hour = hour;
+        this.meridian = meridian;
+        this.clientName = clientName;
+        this.medicName = medicName;
+        this.profile = profile;
+    }
+
+    public Data (Data item)
+    {
+        this.day = item.day;
+        this.month = item.month;
+        this.year = item.year;
+        this.hour = item.hour;
+        this.meridian = item.meridian;
+        this.clientName = item.clientName;
+        this.medicName = item.medicName;
+        this.profile = item.profile;
+    }
 
     public void SetDate()
     {

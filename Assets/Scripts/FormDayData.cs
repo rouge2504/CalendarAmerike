@@ -63,8 +63,29 @@ public class FormDayData : MonoBehaviour
         }
     }
 
+    public void SetPatient(string client)
+    {
+        inputFieldClient.text = client;
+    }
+
     public void SetClient(Data data)
     {
         inputFieldClient.text = data.clientName;
+    }
+
+    public void ChangeOptionMedic()
+    {
+        for (int i = 0; i < DataManager.instance.medicName.Count; i++)
+        {
+            if (dropdownMedic.value == i)
+            {
+                DataManager.instance.dataTemp.medicName = DataManager.instance.medicName[i];
+            }
+        }
+    }
+
+    public void SetPatientSave()
+    {
+        DataManager.instance.dataTemp.clientName = inputFieldClient.text;
     }
 }

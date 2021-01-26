@@ -103,6 +103,7 @@ public class DayChecker : MonoBehaviour
                 DataManager.instance.formDayData.SetForm(data.medicName);
                 DataManager.instance.formDayData.SetClient(data);
                 DataManager.instance.formDayData.SetHours(date);
+                DataManager.instance.formDayData.SetPatient(data.clientName);
                 print("Find");
                 return;
             }
@@ -111,6 +112,7 @@ public class DayChecker : MonoBehaviour
 
         DataManager.instance.formDayData.SetForm("");
         DataManager.instance.formDayData.SetHours(date);
+        DataManager.instance.formDayData.SetPatient("");
 
         print("Empty");
     }
@@ -132,6 +134,8 @@ public class DayChecker : MonoBehaviour
                 SetColor(hoursList[i].GetComponent<Image>(), stayHourColor);
             }
 
+            hoursList[i].contentText.text ="DISPONIBLE";
+
             for (int j = 0; j < DataManager.instance.dataList.Count; j++)
             {
                 Data data = DataManager.instance.dataList[j];
@@ -148,6 +152,7 @@ public class DayChecker : MonoBehaviour
                     {
                         SnapTo(hoursList[i].GetComponent<RectTransform>());
                         SetColor(hoursList[i].GetComponent<Image>(), ocupadedHourColor);
+                        hoursList[i].openDayDataDay.gameObject.SetActive((DataManager.instance.tempProfile == DataManager.Profile.CLIENT) ? false : true);
                         hoursList[i].SetContentText(data.medicName);
 
                     }

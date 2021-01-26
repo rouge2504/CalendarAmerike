@@ -7,7 +7,7 @@
             "hour": 8,
             "meridian": "AM",
             "clientName": "Juanito",
-            "medicName": "Ernesto Zedillo",
+            "medicName": "Dr. Ernesto Zedillo",
             "profile": 0
         },
         {
@@ -16,28 +16,48 @@
             "year": 2021,
             "hour": 10,
             "meridian": "AM",
-            "clientName": "Panchito",
-            "medicName": "Enrique Peña",
+            "clientName": "El Yorch",
+            "medicName": "Dr. Enrique Peña",
             "profile": 0
         },
-		{
+        {
             "day": 27,
             "month": 1,
             "year": 2021,
             "hour": 10,
             "meridian": "AM",
             "clientName": "Panchito",
-            "medicName": "Enrique Peña",
+            "medicName": "Dr. Enrique Peña",
             "profile": 0
         },
-		{
+        {
+            "day": 26,
+            "month": 1,
+            "year": 2021,
+            "hour": 20,
+            "meridian": "PM",
+            "clientName": "Sancho Panza",
+            "medicName": "Dr. Enrique Peña",
+            "profile": 0
+        },
+        {
+            "day": 26,
+            "month": 1,
+            "year": 2021,
+            "hour": 16,
+            "meridian": "PM",
+            "clientName": "Juanito y los clonosaurios",
+            "medicName": "Dr. Ernesto Zedillo",
+            "profile": 0
+        },
+        {
             "day": 28,
             "month": 1,
             "year": 2021,
-            "hour": 10,
+            "hour": 6,
             "meridian": "AM",
-            "clientName": "Panchito",
-            "medicName": "Lazaro Cardenas",
+            "clientName": "Escitoa Juan",
+            "medicName": "Dr. Ernesto Zedillo",
             "profile": 0
         }
     ]
