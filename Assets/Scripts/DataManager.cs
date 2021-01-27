@@ -40,7 +40,7 @@ public class DataManager : MonoBehaviour
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
-            Data[] data = JsonHelper.FromJson<Data>(json);
+            Data[] data = JsonHelperItem.FromJson<Data>(json);
             dataList = data.OfType<Data>().ToList();
             FillListMedic(dataList);
         }else
@@ -73,7 +73,7 @@ public class DataManager : MonoBehaviour
         {
             string json = File.ReadAllText(path);
             print(json);
-            Data[] data = JsonHelper.FromJson<Data>(json);
+            Data[] data = JsonHelperItem.FromJson<Data>(json);
             print(data[0].profile);
         }
     }
@@ -85,7 +85,7 @@ public class DataManager : MonoBehaviour
         dataTemp.SetDate();
 
         dataList.Add(new Data(dataTemp));
-        string json = JsonHelper.ToJson(dataList.ToArray(), true);
+        string json = JsonHelperItem.ToJson(dataList.ToArray(), true);
 
         File.WriteAllText(path, json);
     }
@@ -199,7 +199,7 @@ public class Data
     }
 }
 
-public static class JsonHelper
+public static class JsonHelperItem
 {
     public static T[] FromJson<T>(string json)
     {

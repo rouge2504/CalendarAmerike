@@ -71,7 +71,7 @@ public class Calendar : MonoBehaviour
 
         public void SetDateMonth(DateTime date)
         {
-            print(date);
+
             DataManager.instance.dataTemp.dateTime = date;
             Calendar.instance.ContentDay.SetActive(true);
             DayChecker.instance.Init();

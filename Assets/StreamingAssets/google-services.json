@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "238431843540",
+    "project_id": "ryapsicologos-d516d",
+    "storage_bucket": "ryapsicologos-d516d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238431843540:android:86b6ba58f59c2a2a363741",
+        "android_client_info": {
+          "package_name": "com.rya_psicologos.Calendario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238431843540-s3q9ruccbfvs525fmbro27h5ntjjaa4j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATDH9LRvXvBQWZjR_3AYS8Zn_P5wsmAko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238431843540-s3q9ruccbfvs525fmbro27h5ntjjaa4j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
