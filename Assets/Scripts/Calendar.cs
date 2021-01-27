@@ -54,6 +54,8 @@ public class Calendar : MonoBehaviour
             this.dayNum = newDayNum;
             if(dayColor == Color.white || dayColor == Color.green)
             {
+                obj.GetComponent<Button>().onClick.RemoveAllListeners();
+                currentDate  = new DateTime(currentDate.Year, currentDate.Month, newDayNum + 1);
                 obj.GetComponentInChildren<Text>().text = (dayNum + 1).ToString();
                 obj.GetComponent<Button>().onClick.AddListener(delegate { SetDateMonth(currentDate); });
 
@@ -161,6 +163,8 @@ public class Calendar : MonoBehaviour
                 {
                     days[i].UpdateColor(Color.white);
                 }
+
+                days[i].currentDate = new DateTime(year, month, 1);
 
                 days[i].UpdateDay(i - startDay);
             }
